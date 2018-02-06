@@ -1,0 +1,4 @@
+width=7
+height=5
+player1_symbol="/"
+player2_symbol="#"
