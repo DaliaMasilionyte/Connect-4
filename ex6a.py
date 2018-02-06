@@ -20,34 +20,33 @@ def createGameField(configFile):
             height = int(height)
             p1_symbol = re.search("player1_symbol=(.*)", data).group(1)
             p1_symbol = getSymbol(p1_symbol)
-            length = len(p1_symbol[0])
-            isValid = checkValid(length, p1_symbol)
+            symbol_edge_length = len(p1_symbol[0])
+            isValid = checkValid(symbol_edge_length, p1_symbol)
             if isValid:
                 p2_symbol = re.search("player2_symbol=(.*)", data).group(1)
                 p2_symbol = getSymbol(p2_symbol)
-                isValid = checkValid(length, p2_symbol)
+                isValid = checkValid(symbol_edge_length, p2_symbol)
                 if isValid:
-                    playerTrackTable = createTable(width, height)
+                    playerTrackTable = createTable(width, height, " ")
                     columnFillList = [height for x in range (width)]
 
                     # Creating the field if the symbols are valid
                     window_width = (width * 2)  + 1
-                    window_height = height * (length + 1)
+                    window_height = height * (symbol_edge_length + 1)
 
-                    board = [[(" " * length) for x in range (window_width)] for y in range (window_height)]
+                    board = createTable(window_width, window_height, (" " * symbol_edge_length))
 
-                    for h in range(window_height):
-                        for w in range(window_width):
-                            if(w == 0):
-                                board[h][w] = '|'
-                            else:
-                                if(w % 2 == 0):
-                                    board[h][w] = "|"
-                                if(h % length == 0):
-                                    if (board[h][w] is not '|'):
-                                        board[h][w] = "-" * length
-                                    # if(board[h-length-1][w] == '-'):
-                                    #    board[h][w] = "-" * length
+                    index = 0
+                    for yCoord in range(window_height):
+
+                        index += 1
+
+                        for xCoord in range(window_width):
+                            if(xCoord % 2 == 0):
+                                board[yCoord][xCoord] = "|"
+                            elif index % (symbol_edge_length + 1) == 0:
+                                board[yCoord][xCoord] = "-" * symbol_edge_length
+                                index = 0
 
 
                     print(np.matrix(board))
@@ -56,13 +55,7 @@ def createGameField(configFile):
 
                     print("")
 
-                    # k = 0
-                    # j = 1
-                    # for symbol in p1_symbol:
-                    #     board[k][j] = symbol
-                    #     k+=1
-                    # print(np.matrix (board))
-        return board, p1_symbol, p2_symbol, length, playerTrackTable, columnFillList
+        return board, p1_symbol, p2_symbol, symbol_edge_length, playerTrackTable, columnFillList
 
     except FileNotFoundError:
         sys.exit ("Provided input file does not exist")  # Abort
@@ -80,8 +73,8 @@ def checkValid(length, list):
             valid = False
     return valid
 
-def createTable(width, height):
-    table = [[" " for x in range (width)] for y in range (height)]
+def createTable(width, height, element):
+    table = [[element for x in range (width)] for y in range (height)]
     return table
 
 
@@ -124,8 +117,14 @@ def gameTurn(player, board, column, boardHeight):
             fillBoard[column] = 1
 
 
-board, p1, p2, boardHeight, playerTrackTable, columnFillList = createGameField('configs.txt')
+board, p1, p2, symbol_edge_length, playerTrackTable, columnFillList = createGameField('configs.txt')
 fillBoard = {}
-firstTurn = input("Player 1 enter the column: ")
+while(True):
+    player1_turn = int(input("Player 1 enter the column: "))
+    player2_turn = int(input("Player 2 enter the column: "))
+
+
+
+
 firstTurn = int(firstTurn)
-gameTurn(p1, board, firstTurn, boardHeight)
+gameTurn(p1, board, firstTurn, symbol_edge_length)
