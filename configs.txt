@@ -1,4 +1,4 @@
-width=3
-height=2
+width=4
+height=3
 player1_symbol=".-.", "| |", ">-<"
 player2_symbol="###", "###", "###"

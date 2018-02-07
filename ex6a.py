@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""ex5.py
+"""ex6.py
 Author: Dalia Masilionyte
 Matr.Nr.: k11726605
-Exercise 5
+Exercise 6
 """
 
 import sys
@@ -64,27 +64,36 @@ def getSymbol(symbol):
     symbol = symbol.split (', ')
     return symbol
 
-
 def checkValid(length, list):
-    valid = True
     for i in range (len(list)):
-        if (len(list[i]) != length):
-            valid = False
-    return valid
+        if len(list[i]) != length:
+            return False
+    return True
 
 def createTable(width, height, element):
     table = [[element for x in range (width)] for y in range (height)]
     return table
 
+def columnsNotFilled(column_fill_list):
+    # If there are non filled columns the game is not over
+    for column_index in column_fill_list:
+        if column_index != 0:
+            return True
+    return False
 
+def checkWinner(player_track_table):
+    print("winner takes it all")
+
+def updateGameTrackBoard(player_track_table, player_no, column, row):
+    player_track_table[row][column] = player_no
 
 #### TODO GAME
-def gameTurn(playerSymbol, board, column, symbol_edge_length, column_fill_list):
+def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list, player_track_table, player_no):
 
     if not 0 < column <= len(column_fill_list):
         print("This column does not exist")
         turn = int(input("Enter the column:"))
-        gameTurn(playerSymbol, board, turn, symbol_edge_length, column_fill_list)
+        gameTurn(player_symbol, board, turn, symbol_edge_length, column_fill_list)
     else:
         # Column count starts at 0
         adjusted_column = column - 1
@@ -92,10 +101,10 @@ def gameTurn(playerSymbol, board, column, symbol_edge_length, column_fill_list):
         if row == 0:
             print("This column is full")
             turn = int(input("Enter the column:"))
-            gameTurn(playerSymbol, board, turn, symbol_edge_length, column_fill_list)
+            gameTurn(player_symbol, board, turn, symbol_edge_length, column_fill_list)
         else:
             adjusted_row = row * (symbol_edge_length + SEPARATOR_SIZE) - symbol_edge_length - SEPARATOR_SIZE
-            for symbol in playerSymbol:
+            for symbol in player_symbol:
                 board[adjusted_row][column * 2 - SEPARATOR_SIZE] = symbol
                 adjusted_row += 1
 
@@ -105,12 +114,19 @@ def gameTurn(playerSymbol, board, column, symbol_edge_length, column_fill_list):
 
 
 
-board, p1, p2, symbol_edge_length, player_track_table, column_fill_list = createGameField('configs.txt')
 
-while(True):
+
+board, player1_symbol, player2_symbol, symbol_edge_length, \
+player_track_table, column_fill_list = createGameField('configs.txt')
+
+game_continues = True
+while(game_continues):
     player1_turn = int(input("Player 1 enter the column: "))
-    gameTurn (p1, board, player1_turn, symbol_edge_length, column_fill_list)
+    gameTurn(player1_symbol, board, player1_turn,
+             symbol_edge_length, column_fill_list, player_track_table, 1)
+
     player2_turn = int(input("Player 2 enter the column: "))
-    gameTurn (p2, board, player2_turn, symbol_edge_length, column_fill_list)
+    gameTurn(player2_symbol, board, player2_turn,
+             symbol_edge_length, column_fill_list, player_track_table, 2)
 
 

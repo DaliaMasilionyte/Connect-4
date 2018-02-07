@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec03971b-fb27-40d3-9f71-56a5eb3f3eac" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configs.txt" afterPath="$PROJECT_DIR$/configs.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex6a.py" afterPath="$PROJECT_DIR$/ex6a.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,25 +26,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ex6.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ex6.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="60" column="20" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
-              <folding>
-                <element signature="e#95#105#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ex6a.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex6a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="87" column="47" lean-forward="false" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
               <folding>
                 <element signature="e#95#105#0" expanded="true" />
+                <element signature="e#194#2204#0" expanded="false" />
+                <element signature="e#2233#2317#0" expanded="false" />
+                <element signature="e#2353#2456#0" expanded="false" />
+                <element signature="e#2503#2586#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -64,8 +57,8 @@
       <file leaf-file-name="configs.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/configs.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="34" lean-forward="true" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+            <state relative-caret-position="15">
+              <caret line="1" column="8" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -99,9 +92,9 @@
         <option value="$PROJECT_DIR$/ex5.py" />
         <option value="$PROJECT_DIR$/ex6.py" />
         <option value="$PROJECT_DIR$/ex5_a.py" />
-        <option value="$PROJECT_DIR$/configs.txt" />
         <option value="$PROJECT_DIR$/ex5a.py" />
         <option value="$PROJECT_DIR$/config.txt" />
+        <option value="$PROJECT_DIR$/configs.txt" />
         <option value="$PROJECT_DIR$/ex6a.py" />
       </list>
     </option>
@@ -280,7 +273,7 @@
         <state relative-caret-position="870">
           <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
           <folding>
-            <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#95#105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -317,6 +310,10 @@
           <caret line="110" column="9" lean-forward="false" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="27" />
           <folding>
             <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#194#2204#0" expanded="false" />
+            <element signature="e#2233#2317#0" expanded="false" />
+            <element signature="e#2353#2456#0" expanded="false" />
+            <element signature="e#2503#2586#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -336,7 +333,7 @@
         <state relative-caret-position="915">
           <caret line="63" column="33" lean-forward="true" selection-start-line="54" selection-start-column="8" selection-end-line="63" selection-end-column="33" />
           <folding>
-            <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#95#105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -373,6 +370,10 @@
           <caret line="109" column="31" lean-forward="true" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
           <folding>
             <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#194#2204#0" expanded="false" />
+            <element signature="e#2233#2317#0" expanded="false" />
+            <element signature="e#2353#2456#0" expanded="false" />
+            <element signature="e#2503#2586#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -408,7 +409,7 @@
         <state relative-caret-position="1185">
           <caret line="81" column="25" lean-forward="true" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
           <folding>
-            <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#95#105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -470,7 +471,7 @@
         <state relative-caret-position="855">
           <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
           <folding>
-            <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#95#105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -500,14 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configs.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="34" lean-forward="true" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ex5a.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
@@ -531,17 +524,29 @@
         <state relative-caret-position="303">
           <caret line="60" column="20" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
           <folding>
-            <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#95#105#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="8" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ex6a.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="87" column="47" lean-forward="false" selection-start-line="87" selection-start-column="47" selection-end-line="87" selection-end-column="47" />
           <folding>
             <element signature="e#95#105#0" expanded="true" />
+            <element signature="e#194#2204#0" expanded="false" />
+            <element signature="e#2233#2317#0" expanded="false" />
+            <element signature="e#2353#2456#0" expanded="false" />
+            <element signature="e#2503#2586#0" expanded="false" />
           </folding>
         </state>
       </provider>
