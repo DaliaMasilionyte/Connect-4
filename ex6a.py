@@ -10,6 +10,8 @@ import re
 import numpy as np
 
 
+SEPARATOR_SIZE = 1
+
 def createGameField(configFile):
     try:
         with open(configFile, 'r', encoding = 'utf-8') as inputFile:
@@ -31,8 +33,8 @@ def createGameField(configFile):
                     columnFillList = [height for x in range (width)]
 
                     # Creating the field if the symbols are valid
-                    window_width = (width * 2)  + 1
-                    window_height = height * (symbol_edge_length + 1)
+                    window_width = (width * 2) + SEPARATOR_SIZE
+                    window_height = height * (symbol_edge_length + SEPARATOR_SIZE)
 
                     board = createTable(window_width, window_height, (" " * symbol_edge_length))
 
@@ -44,15 +46,12 @@ def createGameField(configFile):
                         for xCoord in range(window_width):
                             if(xCoord % 2 == 0):
                                 board[yCoord][xCoord] = "|"
-                            elif index % (symbol_edge_length + 1) == 0:
+                            elif index % (symbol_edge_length + SEPARATOR_SIZE) == 0:
                                 board[yCoord][xCoord] = "-" * symbol_edge_length
                                 index = 0
 
 
                     print(np.matrix(board))
-
-
-
                     print("")
 
         return board, p1_symbol, p2_symbol, symbol_edge_length, playerTrackTable, columnFillList
@@ -78,53 +77,59 @@ def createTable(width, height, element):
     return table
 
 
-def checkColumn(column, boardWidth, boardHeight):
-    valid = False
-    if(column < 0 or column > boardWidth):
-        valid = False
-    elif(column != 1):
-        column * 2 - 1
-        if(column > boardWidth):
-            valid = False
-        elif(isFull(column, boardHeight)):
-            valid = False
-        else:
-            valid = True
+# def checkColumn(column, boardWidth, boardHeight):
+#     # valid = False
+    # if(column < 0 or column > boardWidth):
+    #     valid = False
+    # elif(column != 1):
+    #     column * 2 - 1
+    #     if(column > boardWidth):
+    #         valid = False
+    #     else:
+    #         valid = True
+    #
+    # return valid
 
-    return valid
+# def isFull(column, symbol_edge_length):
+#     if(column in fillBoard):
+#         if (fillBoard[column] == symbol_edge_length):
+#             isFull = True
+#     else:
+#         isFull = False
+#     return isFull
 
-def isFull(column, boardHeight):
-    if(column in fillBoard):
-        if (fillBoard[column] == boardHeight):
-            isFull = True
-    else:
-        isFull = False
-    return isFull
 
 
 #### TODO GAME
-def gameTurn(player, board, column, boardHeight):
-    valid = checkColumn(column, board.shape[1], boardHeight)
-    if (valid == False):
-        print("Invalid turn")
+def gameTurn(playerSymbol, board, column, symbol_edge_length, columnFillList):
+    # if (checkColumn(column, board.shape[1], symbol_edge_length) == False):
+    #     print("Invalid turn")
+    #     return
+    # print(np.matrix(board))
+    # print("")
+    row = columnFillList[column-1]
+    if row == 0:
+        print("This column is full")
+        turn = int(input("Enter the column:"))
+        gameTurn(playerSymbol, board, turn, symbol_edge_length, columnFillList)
     else:
-        if column in fillBoard:
+        adjusted_row = row * (symbol_edge_length + SEPARATOR_SIZE) - symbol_edge_length - SEPARATOR_SIZE
+        for symbol in playerSymbol:
+            board[adjusted_row][column * 2 - SEPARATOR_SIZE] = symbol
+            adjusted_row += 1
 
-    ##### TODO implement the turn
+        columnFillList[column-1] -= 1
+        print(np.matrix(board))
 
-            fillBoard[column] += 1
-        else:
-            fillBoard[column] = 1
+
 
 
 board, p1, p2, symbol_edge_length, playerTrackTable, columnFillList = createGameField('configs.txt')
-fillBoard = {}
+
 while(True):
     player1_turn = int(input("Player 1 enter the column: "))
+    gameTurn (p1, board, player1_turn, symbol_edge_length, columnFillList)
     player2_turn = int(input("Player 2 enter the column: "))
+    gameTurn (p2, board, player2_turn, symbol_edge_length, columnFillList)
 
 
-
-
-firstTurn = int(firstTurn)
-gameTurn(p1, board, firstTurn, symbol_edge_length)

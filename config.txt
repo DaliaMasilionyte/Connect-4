@@ -1,4 +1,4 @@
-width=7
+width=4
 height=5
-player1_symbol="/"
-player2_symbol="#"
+player1_symbol="//", "dd"
+player2_symbol="#a", "av"
