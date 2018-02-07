@@ -81,11 +81,12 @@ def columnsNotFilled(column_fill_list):
             return True
     return False
 
-def checkWinner(player_track_table):
+def checkPlayerTrackTable(player_track_table):
     print("winner takes it all")
 
-def updateGameTrackBoard(player_track_table, player_no, column, row):
+def updateGameTrackTable(player_track_table, player_no, column, row):
     player_track_table[row][column] = player_no
+    print(np.matrix(player_track_table))
 
 #### TODO GAME
 def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list, player_track_table, player_no):
@@ -110,7 +111,9 @@ def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list,
 
             column_fill_list[adjusted_column] -= 1
             print(np.matrix(board))
+            print("")
 
+            updateGameTrackTable(player_track_table, player_no, adjusted_column, row - 1)
 
 
 
@@ -123,10 +126,10 @@ game_continues = True
 while(game_continues):
     player1_turn = int(input("Player 1 enter the column: "))
     gameTurn(player1_symbol, board, player1_turn,
-             symbol_edge_length, column_fill_list, player_track_table, 1)
+             symbol_edge_length, column_fill_list, player_track_table, "1")
 
     player2_turn = int(input("Player 2 enter the column: "))
     gameTurn(player2_symbol, board, player2_turn,
-             symbol_edge_length, column_fill_list, player_track_table, 2)
+             symbol_edge_length, column_fill_list, player_track_table, "2")
 
 
