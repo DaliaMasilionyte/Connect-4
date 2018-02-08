@@ -81,8 +81,12 @@ def columnsNotFilled(column_fill_list):
             return True
     return False
 
-def checkPlayerTrackTable(player_track_table):
+def checkPlayerTrackTable(player_track_table, row, column):
     print("winner takes it all")
+    for yCoord in player_track_table:
+        for xCoord in player_track_table[yCoord]:
+
+
 
 def updateGameTrackTable(player_track_table, player_no, column, row):
     player_track_table[row][column] = player_no
