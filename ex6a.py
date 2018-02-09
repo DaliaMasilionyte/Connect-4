@@ -81,14 +81,88 @@ def columnsNotFilled(column_fill_list):
             return True
     return False
 
-def checkPlayerTrackTable(player_track_table, row, column):
-    print("winner takes it all")
-    for yCoord in player_track_table:
-        for xCoord in player_track_table[yCoord]:
+def checkForFour():
+    winner = None
+    for yCoord in range(len(player_track_table)):
+        if winner != None:
+            break
+        for xCoord in range(len(player_track_table[yCoord])):
+            if player_track_table[yCoord][xCoord] != " ":
+                if verticalCheck(yCoord, xCoord) or horizontalCheck(yCoord, xCoord) \
+                        or diagonalCheck(yCoord, xCoord):
+                    winner = player_track_table[yCoord][xCoord]
+                    break
+                else:
+                    winner = None
+    return winner
+
+
+def verticalCheck(row, column):
+    won = False
+    count = 0
+    for yCoord in range(row, len(player_track_table)):
+        if player_track_table[yCoord][column] == player_track_table[row][column]:
+            count += 1
+        else:
+            break
+    if count >= 4:
+        won = True
+
+    return won
+
+
+def horizontalCheck(row, column):
+    won = False
+    count = 0
+    for xCoord in range(column, len(player_track_table[row])):
+        if player_track_table[row][xCoord] == player_track_table[row][column]:
+            count += 1
+        else:
+            break
+    if count >= 4:
+        won = True
+
+    return won
+
+
+def diagonalCheck(row, column):
+    won = False
+    count = 0
+
+    # From top right to bottom left
+
+    xCoord = column
+    for yCoord in range(row, len(player_track_table)):
+        if xCoord > len(player_track_table[row]) - 3:
+            break
+        elif player_track_table[yCoord][xCoord] == player_track_table[row][column]:
+            count += 1
+        else:
+            break
+        xCoord += 1
+
+    if count >= 4:
+        won = True
+    else:
+        count = 0
+        xCoord = column
+        for yCoord in range(row, -1, -1):
+            if xCoord > len(player_track_table[row]) - 3:
+                break
+            elif player_track_table[yCoord][xCoord] == player_track_table[row][column]:
+                count += 1
+            else:
+                break
+            xCoord += 1
+        if count >= 4:
+            won = True
+
+    return won
 
 
 
-def updateGameTrackTable(player_track_table, player_no, column, row):
+
+def updateGameTrackTable(player_no, column, row):
     player_track_table[row][column] = player_no
     print(np.matrix(player_track_table))
 
@@ -117,9 +191,17 @@ def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list,
             print(np.matrix(board))
             print("")
 
-            updateGameTrackTable(player_track_table, player_no, adjusted_column, row - 1)
+            updateGameTrackTable(player_no, adjusted_column, row - 1)
 
 
+
+def gameContinues():
+    if checkForFour() != None:
+        winner = checkForFour()
+        print("Player number {} won the game".format (winner))
+        return False
+    else:
+        return True
 
 
 
@@ -131,9 +213,11 @@ while(game_continues):
     player1_turn = int(input("Player 1 enter the column: "))
     gameTurn(player1_symbol, board, player1_turn,
              symbol_edge_length, column_fill_list, player_track_table, "1")
-
+    game_continues = gameContinues()
+    if game_continues != True:
+        break
     player2_turn = int(input("Player 2 enter the column: "))
     gameTurn(player2_symbol, board, player2_turn,
              symbol_edge_length, column_fill_list, player_track_table, "2")
-
+    game_continues = gameContinues ()
 
