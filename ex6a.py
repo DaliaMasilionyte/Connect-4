@@ -129,6 +129,11 @@ def diagonalCheck(row, column):
     won = False
     count = 0
 
+    # xCoord = column
+    # for yCoord in range (row, len(player_track_table)):
+
+
+
     # From top right to bottom left
 
     xCoord = column
@@ -164,6 +169,7 @@ def diagonalCheck(row, column):
 
 def updateGameTrackTable(player_no, column, row):
     player_track_table[row][column] = player_no
+    game_turn_number += 1
     print(np.matrix(player_track_table))
 
 #### TODO GAME
@@ -196,10 +202,14 @@ def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list,
 
 
 def gameContinues():
-    if checkForFour() != None:
-        winner = checkForFour()
-        print("Player number {} won the game".format (winner))
-        return False
+    # Start checking for fours when there already was at least 7 turns
+    if game_turn_number >= 7:
+        if checkForFour() != None:
+            winner = checkForFour()
+            print("Player number {} won the game".format (winner))
+            return False
+        else:
+            return True
     else:
         return True
 
@@ -207,6 +217,7 @@ def gameContinues():
 
 board, player1_symbol, player2_symbol, symbol_edge_length, \
 player_track_table, column_fill_list = createGameField('configs.txt')
+game_turn_number = 0
 
 game_continues = True
 while(game_continues):
