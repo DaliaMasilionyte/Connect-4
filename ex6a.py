@@ -20,28 +20,38 @@ def createGameField(configFile):
     try:
         with open(configFile, 'r', encoding = 'utf-8') as inputFile:
             data = inputFile.read()
+
             width = re.search("width=([0-9].*)", data).group(1)
             width = int(width)
+
             height = re.search("height=([0-9].*)", data).group(1)
             height = int(height)
+
             p1_symbol = re.search("player1_symbol=(.*)", data).group(1)
             p1_symbol = getSymbol(p1_symbol)
             symbol_edge_length = len(p1_symbol[0])
+
+            # Checking if symbols are valid
             isValid = checkValid(symbol_edge_length, p1_symbol)
+
+            # Second symbol check only if first is valid
             if isValid:
                 p2_symbol = re.search("player2_symbol=(.*)", data).group(1)
                 p2_symbol = getSymbol(p2_symbol)
                 isValid = checkValid(symbol_edge_length, p2_symbol)
+
+                # Create the progress track table and list if symbols are valid
                 if isValid:
                     player_track_table = createTable(width, height, " ")
                     column_fill_list = [height for x in range (width)]
 
-                    # Creating the field if the symbols are valid
+                    # Creating the game board if the symbols are valid
                     window_width = (width * 2) + SEPARATOR_SIZE
                     window_height = height * (symbol_edge_length + SEPARATOR_SIZE)
 
                     board = createTable(window_width, window_height, (" " * symbol_edge_length))
 
+                    # Draw the board with separators
                     index = 0
                     for yCoord in range(window_height):
                         index += 1

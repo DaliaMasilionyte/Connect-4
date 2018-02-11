@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ec03971b-fb27-40d3-9f71-56a5eb3f3eac" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex5a.py" afterPath="$PROJECT_DIR$/ex5a.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex6a.py" afterPath="$PROJECT_DIR$/ex6a.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="ex6a.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ex6a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
               <folding>
                 <element signature="e#95#105#0" expanded="true" />
               </folding>
@@ -50,8 +51,8 @@
       <file leaf-file-name="ex5a.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex5a.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="50" column="41" lean-forward="false" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+            <state relative-caret-position="-615">
+              <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
               <folding>
                 <element signature="e#95#105#0" expanded="true" />
               </folding>
@@ -637,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex6a.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
           <folding>
             <element signature="e#95#105#0" expanded="true" />
           </folding>
@@ -647,8 +648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex5a.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="50" column="41" lean-forward="false" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="41" />
+        <state relative-caret-position="-615">
+          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
           <folding>
             <element signature="e#95#105#0" expanded="true" />
           </folding>
