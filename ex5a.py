@@ -11,7 +11,6 @@ import numpy as np
 
 SEPARATOR_SIZE = 1
 
-
 # Function to create the game field
 
 def createGameField(configFile):

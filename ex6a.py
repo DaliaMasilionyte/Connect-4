@@ -241,12 +241,15 @@ player_track_table, column_fill_list = createGameField('configs.txt')
 
 game_continues = True
 while(game_continues):
+
     player1_turn = int(input("Player 1 enter the column: "))
     gameTurn(player1_symbol, board, player1_turn,
              symbol_edge_length, column_fill_list, player_track_table, "1")
     game_continues = gameContinues()
+
     if game_continues != True:
         break
+        
     player2_turn = int(input("Player 2 enter the column: "))
     gameTurn(player2_symbol, board, player2_turn,
              symbol_edge_length, column_fill_list, player_track_table, "2")
