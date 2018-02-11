@@ -131,16 +131,11 @@ def diagonalCheck(row, column):
     won = False
     count = 0
 
-    # xCoord = column
-    # for yCoord in range (row, len(player_track_table)):
-
-
-
     # From top right to bottom left
     #
     xCoord = column
     for yCoord in range(row, len(player_track_table)):
-        if xCoord > len(player_track_table[row]) - 3:
+        if xCoord > len(player_track_table[row]) - 1:
             break
         elif player_track_table[yCoord][xCoord] == player_track_table[row][column]:
             count += 1
@@ -154,7 +149,7 @@ def diagonalCheck(row, column):
         count = 0
         xCoord = column
         for yCoord in range(row, -1, -1):
-            if xCoord > len(player_track_table[row]) - 3:
+            if xCoord > len(player_track_table[row]) - 1:
                 break
             elif player_track_table[yCoord][xCoord] == player_track_table[row][column]:
                 count += 1
@@ -170,10 +165,10 @@ def diagonalCheck(row, column):
 
 
 def updateGameTrackTable(player_no, column, row):
+    global game_turn_number
     player_track_table[row][column] = player_no
-
     # # kodel cia local variable
-    # game_turn_number += 1
+    game_turn_number += 1
 
     print(np.matrix(player_track_table))
 
@@ -231,13 +226,11 @@ while(game_continues):
     player1_turn = int(input("Player 1 enter the column: "))
     gameTurn(player1_symbol, board, player1_turn,
              symbol_edge_length, column_fill_list, player_track_table, "1")
-    game_turn_number += 1
     game_continues = gameContinues()
     if game_continues != True:
         break
     player2_turn = int(input("Player 2 enter the column: "))
     gameTurn(player2_symbol, board, player2_turn,
              symbol_edge_length, column_fill_list, player_track_table, "2")
-    game_turn_number += 1
     game_continues = gameContinues ()
 
