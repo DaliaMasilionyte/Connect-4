@@ -11,6 +11,7 @@ import numpy as np
 
 
 SEPARATOR_SIZE = 1
+game_turn_number = 0
 
 def createGameField(configFile):
     try:
@@ -79,6 +80,7 @@ def columnsNotFilled(column_fill_list):
     for column_index in column_fill_list:
         if column_index != 0:
             return True
+    print("The boards is full, no player won")
     return False
 
 def checkForFour():
@@ -135,7 +137,7 @@ def diagonalCheck(row, column):
 
 
     # From top right to bottom left
-
+    #
     xCoord = column
     for yCoord in range(row, len(player_track_table)):
         if xCoord > len(player_track_table[row]) - 3:
@@ -169,7 +171,10 @@ def diagonalCheck(row, column):
 
 def updateGameTrackTable(player_no, column, row):
     player_track_table[row][column] = player_no
-    game_turn_number += 1
+
+    # # kodel cia local variable
+    # game_turn_number += 1
+
     print(np.matrix(player_track_table))
 
 #### TODO GAME
@@ -178,7 +183,7 @@ def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list,
     if not 0 < column <= len(column_fill_list):
         print("This column does not exist")
         turn = int(input("Enter the column:"))
-        gameTurn(player_symbol, board, turn, symbol_edge_length, column_fill_list)
+        gameTurn(player_symbol, board, turn, symbol_edge_length, column_fill_list, player_track_table, player_no)
     else:
         # Column count starts at 0
         adjusted_column = column - 1
@@ -186,7 +191,7 @@ def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list,
         if row == 0:
             print("This column is full")
             turn = int(input("Enter the column:"))
-            gameTurn(player_symbol, board, turn, symbol_edge_length, column_fill_list)
+            gameTurn(player_symbol, board, turn, symbol_edge_length, column_fill_list, player_track_table, player_no)
         else:
             adjusted_row = row * (symbol_edge_length + SEPARATOR_SIZE) - symbol_edge_length - SEPARATOR_SIZE
             for symbol in player_symbol:
@@ -202,33 +207,37 @@ def gameTurn(player_symbol, board, column, symbol_edge_length, column_fill_list,
 
 
 def gameContinues():
-    # Start checking for fours when there already was at least 7 turns
-    if game_turn_number >= 7:
-        if checkForFour() != None:
-            winner = checkForFour()
-            print("Player number {} won the game".format (winner))
-            return False
+    if columnsNotFilled(column_fill_list):
+        # Start checking for fours when there already was at least 7 turns
+        if game_turn_number >= 7:
+            if checkForFour() != None:
+                winner = checkForFour()
+                print("Player number {} won the game".format (winner))
+                return False
+            else:
+                return True
         else:
             return True
     else:
-        return True
+        return False
 
 
 
 board, player1_symbol, player2_symbol, symbol_edge_length, \
 player_track_table, column_fill_list = createGameField('configs.txt')
-game_turn_number = 0
 
 game_continues = True
 while(game_continues):
     player1_turn = int(input("Player 1 enter the column: "))
     gameTurn(player1_symbol, board, player1_turn,
              symbol_edge_length, column_fill_list, player_track_table, "1")
+    game_turn_number += 1
     game_continues = gameContinues()
     if game_continues != True:
         break
     player2_turn = int(input("Player 2 enter the column: "))
     gameTurn(player2_symbol, board, player2_turn,
              symbol_edge_length, column_fill_list, player_track_table, "2")
+    game_turn_number += 1
     game_continues = gameContinues ()
 
